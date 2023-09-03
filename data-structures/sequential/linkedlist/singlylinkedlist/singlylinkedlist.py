@@ -26,22 +26,46 @@ class SinglyLinkedList:
             self.head = self.head.next
             self.size -= 1
 
-    def append(self):
-        pass
+    def insert(self, data, index):
+        if index > self.size or index < self.size:
+            print("Error: Index out of bounds!")
+        else:
+            newNode = ListNode(data)
+            start = self.head
+            for x in range(0, index):
+                start = start.next
+            newNode.next = start
+            start = newNode
+            self.size += 1
 
-    def remove(self):
-        pass
+    def remove(self, index):
+        if index > self.size or index < self.size:
+            print("Error: Index out of bounds!")
+        else:
+            start = self.head
+            for x in range(0, index):
+                start = start.next
+            start = start.next
+            self.size -= 1
 
-    def insert(self, index):
-        if (index > 0 and index < self.size - 1):
-            pass
-
-    def swapRemove(self, index):
-        pass
+    def printList(self):
+        start = self.head
+        arr = []
+        while start.next != None:
+            arr.append(start.data)
+            start = start.next
+        arr.append(start.data)
+        print(arr)
 
 
 def main():
-    pass
+    list = SinglyLinkedList()
+    list.push(1)
+    list.pop()
+    list.push(2)
+    list.push(3)
+    list.push(4)
+    list.printList()
 
 
 if __name__ == '__main__':
